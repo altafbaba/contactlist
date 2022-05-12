@@ -1,0 +1,36 @@
+<div class="p-6">
+  <div class="flex justify-between ">
+    <!-- filter btn -->
+    <button mat-stroked-button [matMenuTriggerFor]="menu">{{selectedFilter}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="selectedFilter='A - Z';filterData()"> A - Z</button>
+      <button mat-menu-item (click)="selectedFilter='Z - A';filterData()"> Z - A</button>
+    </mat-menu>
+
+    <!-- create user btn -->
+    <button mat-raised-button color="accent" (click)="createUser()">
+      Create User
+    </button>
+  </div>
+  <div class="container px-4 mx-auto">
+
+    <!-- list Of Users -->
+    <div mat-subheader>Contacts</div>
+    <div *ngFor="let usr of data" class="flex p-4" mat-ripple (click)="deleteUser(usr)">
+
+      <div>
+
+        <mat-icon *ngIf="!usr.avatar" mat-list-icon>face</mat-icon>
+
+        <img *ngIf="usr.avatar" mat-list-icon alt="Contact avatar" class="  rounded-full" [src]="usr.avatar" />
+      </div>
+      <div class="pl-6">
+
+
+        <div mat-line>{{usr.first_name + " " + usr.last_name}}</div>
+        <div mat-line> {{usr.email }} </div>
+      </div>
+    </div>
+
+  </div>
+</div>

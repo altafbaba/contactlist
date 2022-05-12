@@ -1,7 +1,7 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@tailwind base;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -9,31 +9,103 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+@import "~@angular/material/theming";
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins",
+);
+@include mat-core($custom-typography);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$contactlist-primary: mat.define-palette(mat.$indigo-palette);
-$contactlist-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$spirit-primary: mat.define-palette(mat.$indigo-palette);
+$spirit-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$contactlist-warn: mat.define-palette(mat.$red-palette);
+$spirit-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$contactlist-theme: mat.define-light-theme((
-  color: (
-    primary: $contactlist-primary,
-    accent: $contactlist-accent,
-    warn: $contactlist-warn,
+$spirit-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $spirit-primary,
+      accent: $spirit-accent,
+      warn: $spirit-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($contactlist-theme);
+@include mat.all-component-themes($spirit-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+layout {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 100%;
+  max-height: 100%;
+
+  /* Base styles for individual layouts */
+  > * {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    // width: 100%;
+  }
+
+  /* Base styles for components that load as a route */
+  // router-outlet {
+  //   + * {
+  //     position: relative;
+  //     display: flex;
+  //     flex: 1 1 auto;
+  //     width: 100%;
+  //   }
+  // }
+}
+
+mat-form-field {
+  font-size: 10px !important;
+}
+
+@tailwind utilities;
+
+.icon-size-4 {
+  width: 1rem !important;
+  height: 1rem !important;
+  min-width: 1rem !important;
+  min-height: 1rem !important;
+  font-size: 1rem !important;
+  line-height: 1rem !important;
+}
+.icon-size-4 {
+  width: 3rem !important;
+  height: 3rem !important;
+  min-width: 3rem !important;
+  min-height: 3rem !important;
+  font-size: 3rem !important;
+  line-height: 3rem !important;
+}
+
+tr.mat-header-row{
+  height: 41px !important;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+  margin: 0 !important;
+}

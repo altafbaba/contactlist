@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-
   {
-    path: 'create',
-    loadChildren: () => import('./features/create-user/create-user.module').then((x) => x.CreateUserModule)
+    path: '',
+    loadChildren: () => import('./features/user/user.module').then((x) => x.UserModule)
   }
+
 ];
 
 @NgModule({
