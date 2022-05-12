@@ -1,0 +1,15 @@
+<div [formGroup]="createForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Last Name</mat-label>
+        <input matInput placeholder="last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Email Id</mat-label>
+        <input matInput placeholder="Email Id" formControlName="emailId">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+</div>
