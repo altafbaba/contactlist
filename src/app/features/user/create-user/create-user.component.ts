@@ -12,9 +12,9 @@ import { UserService } from 'src/app/core/user/user.service';
 export class CreateUserComponent implements OnInit {
 
   public userForm: FormGroup = new FormGroup({
-    first_name: new FormControl('', [Validators.required]),
-    last_name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    first_name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+    last_name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     avatar: new FormControl(''),
 
   })
